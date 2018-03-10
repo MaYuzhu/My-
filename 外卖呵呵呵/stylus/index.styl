@@ -1,0 +1,542 @@
+@import "mixins.styl"
+
+.app
+  width 100%
+  height 100%
+  background #f3f5f1
+  .content
+    width 100%
+    height 100%
+    section
+
+    .on
+      display block
+      .header
+        position fixed
+        top 0
+        z-index 50
+        display block
+        width 100%
+        height 50px
+        background #02a774
+        p
+          text-overflow ellipsis
+          white-space nowrap
+          overflow hidden
+        .sousuo,.zhuce
+          width 15%
+          height 100%
+          display block
+          line-height 50px
+          text-align center
+          color #ffffff
+        .sousuo
+          float left
+          .iconfont
+            font-size 30px
+        .zhuce
+          width 25%
+          float right
+          a
+            color #f3f5f1
+          :first-child
+            padding-right 4px
+            border-right 2px #f3f5f1 solid
+        p
+          float left
+          width 60%
+          text-align center
+          line-height 50px
+          font-size 20px
+          color #f3f5f1
+        .page2_sousuo
+          text-align center
+          vertical-align middle
+          font-size 26px
+          width 100%
+        .ding3
+          width 100%
+      .person
+        width 200px
+        height 200px
+        padding-top 180px
+        margin 0px auto
+        background url("../images/others/person.png")
+        background-position center
+        background-repeat no-repeat
+        background-size 130%
+      .person_longin
+        display block
+        margin 80px auto
+        width 120px
+        height 40px
+        background #02a774
+        color #ffffff
+        border-radius 8px
+        font-size 16px
+        outline none
+      .person_p
+        margin -70px auto
+        text-align center
+      .one_page_content
+        margin-top 50px
+        margin-bottom 80px
+      .tow_page_content
+        margin-top 50px
+        .form1
+          width 100%
+          height 60px
+          background #fff
+          position relative
+          .sousuo_form1
+            float left
+            width 70%
+            height 40px
+            background #eee
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            margin-left 8px
+            outline none
+          .sousuo_form2
+            float right
+            width 20%
+            height 40px
+            border-radius 5px
+            background #02a774
+            font-size 18px
+            color #fff
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            right 8px
+
+      .swiper-container
+        width 100%
+        height 240px
+        position relative
+        .swiper-wrapper
+          position absolute
+          left 0
+          width 200%
+          height 100%
+          background #fff
+          .lun_content_1,.lun_content_2
+            float left
+            width 100%
+            display flex
+            justify-content center
+            flex-wrap wrap
+            a
+              width 25%
+              height 100px
+              display flex
+              align-items center
+              flex-direction column
+              flex-wrap wrap
+              font-size 14px
+     .shang
+        background #fff
+        width 100%
+        margin-top 16px
+        .shang_top
+          padding-left 4px
+          color #999
+          font-size 18px
+          .iconfont
+            font-size 20px
+        .shang_content
+          .shang_content_list
+            width 100%
+            overflow hidden
+            box-sizing border-box
+            padding 10px
+            .shang_content_list_left
+              width 26%
+              img
+                width 100%
+                height 100%
+              float left
+            .shang_content_list_right
+              float right
+              display flex
+              flex-wrap: wrap
+              align-content space-between
+              width 70%
+              height 104px
+              .right1
+                width 100%
+                height 33%
+                :nth-child(1)
+                  font-size 16px
+                  font-weight 600
+                  color #555
+                  background #FFD933
+                  border-radius 3px
+                  padding 1px 4px
+                  margin-top 3px
+                  float left
+                :nth-child(2)
+                  width 150px
+                  font-weight 800
+                  font-size 24px
+                  text-overflow ellipsis
+                  white-space nowrap
+                  overflow hidden
+                  float left
+                :nth-child(3)
+                  float right
+                  margin-top 3px
+                  color #666
+              .right2
+                width 100%
+                height 33%
+                p
+                  float left
+                div:nth-child(2)
+                  background #fff
+                  color #02a774
+                  float right
+                  border 1px solid #02a774
+                  border-radius 3px
+                  font-size 14px
+                  padding 2px
+                div:nth-child(3)
+                  background #02a774
+                  color #fff
+                  float right
+                  margin-right 5px
+                  border-radius 3px
+                  font-size 14px
+                  padding 2px
+                  border 1px solid #02a774
+              .right3
+                font-size 16px
+                color #666
+
+
+  .on
+    .p4
+      position fixed
+      z-index 20
+      top 0
+      background #02a774
+      width 100%
+      height 50px
+      line-height 50px
+      color #fff
+      text-align center
+      font-size 20px
+      border-bottom 1px solid #f3f5f1
+    .four_page_content
+      margin-top 50px
+      .four_page1
+        width 100%
+        height 100px
+        background #02a774
+        border-top 1px solid #f3f5f1
+        position relative
+        .four_page1_left
+          float left
+          position absolute
+          top 0
+          bottom 0
+          margin auto
+          .touxiang
+            float left
+            width 70px
+            height 70px
+            background #8b8b8d
+            position absolute
+            top 0
+            bottom 0
+            margin auto auto auto 16px
+            border-radius 50%
+            overflow hidden
+            :first-child
+              width 36px
+              height 36px
+              background #e4e4e4
+              border-radius 50%
+              margin-left 17px
+              margin-top 5px
+            :last-child
+              width 64px
+              height 32px
+              background #e4e4e4
+              border-radius 32px 32px 0 0
+              margin -1px 0px 0px 3px
+          .tou_right
+            float right
+            position absolute
+            top 0
+            bottom 0
+            margin auto auto auto 100px
+            width 200px
+            height 70px
+            display flex
+            flex-direction column
+            justify-content space-around
+            >p:nth-child(1)
+              font-size 20px
+              color #ffffff
+              font-weight bold
+            >p:nth-child(2)
+              font-size 14px
+              color #ffffff
+              text-align left
+              margin-bottom -5px
+              i
+                font-size 40px
+                color #ffffff
+                vertical-align middle
+                margin -20px
+
+
+
+        .four_page1_right
+          float right
+          width 30px
+          height 100%
+          display flex
+          flex-direction column
+          justify-content center
+          color #ffffff
+      .four_page2
+        width 100%
+        height 80px
+        background #ffffff
+        display flex
+        justify-content space-between
+        div:nth-child(1)
+          flex-grow 1
+          text-align center
+          margin 10px auto
+          p
+            margin 4px auto
+            span
+              font-size 32px
+              font-weight bold
+              color #ff9f1a
+        div:nth-child(2)
+          margin 10px auto
+          flex-grow 1
+          text-align center
+          border-left  solid 1px #f3f5f1
+          border-right   solid 1px #f3f5f1
+          p
+            margin 4px auto
+            span
+              font-size 32px
+              font-weight bold
+              color #ff205c
+        div:nth-child(3)
+          margin 10px auto
+          flex-grow 1
+          text-align center
+          p
+            margin 4px auto
+            span
+              font-size 32px
+              font-weight bold
+              color #0dbc1b
+      .four_page3
+        width 100%
+        height 60px
+        background #ffffff
+        margin-top 8px
+        line-height 60px
+        >p:nth-child(1)
+          float left
+          color #777
+          font-size 18px
+          margin-left 10px
+          i
+            color #0dbc1b
+            font-size 30px
+            vertical-align middle
+        >p:nth-child(2)
+          float right
+          color #777
+          margin-right 10px
+      .four_page4
+        four-page(red)
+        width 100%
+        height 60px
+        background #ffffff
+        border-top  1px solid #f0f0f0
+        border-bottom   1px solid #f0f0f0
+
+      .four_page5
+        four-page(#ff980b)
+        width 100%
+        height 60px
+        background #ffffff
+        margin-bottom 8px
+      .four_page6
+        four-page(#66ac00)
+        width 100%
+        height 60px
+        background #ffffff
+
+
+ .footer
+    top-border-1px(#8b8b8d)
+    position fixed
+    bottom 0
+    left 0
+    right 0
+    background #fff
+    height: 50px
+    display flex
+
+    .guide_item
+      color #888
+      display flex
+      flex 1
+      align-items center
+      flex-direction column
+      flex-wrap wrap
+      margin 5px 0
+      span
+        font-size 12px
+      .iconfont
+        font-size 24px
+      &.on
+        color #02a774
+
+ .login_route
+   width 100%
+   height 100%
+   background #f9f9f9
+   position relative
+
+   >div:nth-child(1)
+     width 100%
+     height 50px
+     color #777
+     line-height  50px
+     padding-left 10px
+     i
+      font-size 28px
+   >div:nth-child(2)
+     font-size 46px
+     color #02a774
+     font-family '微软雅黑'
+     font-weight 600
+     text-align center
+     padding 20px 0
+   >div:nth-child(3)
+     >div:nth-child(1)
+       width 44%
+       margin 20px auto 5px
+       .active
+         color #02a774
+         border-bottom 3px solid #02a774
+         font-weight bold
+       :first-child
+         font-size 18px
+         float left
+         padding-bottom 6px
+       :last-child
+         font-size 18px
+         float right
+         padding-bottom 6px
+     .active1
+       display none
+     .form_login1
+       width 84%
+       height auto
+       margin 0 auto
+       input:nth-child(1)
+         input-style()
+         margin 10px auto 28px
+       input:nth-child(2)
+         input-style()
+         margin 4px auto
+       p
+         width 100%
+         margin-top 30px
+         font-size 16px
+         color #999
+         text-align center
+         a
+           color #02a774
+       input:nth-child(4)
+         input-style()
+         background #0dbb1b
+         color #ffffff
+         font-size 20px
+         font-weight 500
+         margin-top 20px
+         &:active
+          background #0deb1d
+     .form_login2
+       width 84%
+       height auto
+       margin 0 auto
+       input:nth-child(1)
+         input-style()
+         margin 10px auto 28px
+       input:nth-child(2)
+         input-style()
+         margin 4px auto
+       p
+         width 100%
+         margin-top 30px
+         font-size 16px
+         color #999
+         text-align center
+
+       input:nth-child(3)
+         input-style()
+         background #0dbb1b
+         color #ffffff
+         font-size 20px
+         font-weight 500
+         margin-top 20px
+         &:active
+           background #0deb1d
+
+
+
+
+   .d1
+     width 60px
+     height 20px
+     background pink
+     border-radius 10px
+   .a1
+
+     position absolute
+     top 290px
+     left 315px
+     span
+       display block
+       transform translate(36px, -20px)
+     .d2
+       width 20px
+       height 20px
+       border-radius 10px
+       background deeppink
+       transition 0.3s
+     //border 1px solid
+
+   .d1-1
+     background #10c914
+     width 60px
+     height 20px
+     border-radius 10px
+     span
+       display block
+       transform translate(6px, -20px)
+     .d2
+       width 20px
+       height 20px
+       border-radius 10px
+       background deeppink
+       //border 1px solid
+       box-sizing border-box
+       transform translate(0px)
+       transition 0.3s
+
