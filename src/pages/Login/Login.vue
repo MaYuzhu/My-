@@ -10,17 +10,17 @@
         </div>
       </div>
       <div class="login_content">
-        <form>
+        <form @submit.prevent="login">
           <div :class="{on:LoginWay}">
             <section class="login_message">
               <input type="text" maxlength="11" placeholder="手机号" v-model="phone">
-              <button class="get_verification" @click="getCode"
+              <button class="get_verification" @click.prevent="getCode"
                       :class="{right_phone:rightPhone}" v-show="!computeTime">获取验证码</button>
               <button disabled="disabled" class="get_verification" style="color: #f10100"
-                      v-show="computeTime" >剩余 {{computeTime}} S</button>
+                      v-show="computeTime" >剩余 {{computeTime}} s</button>
             </section>
             <section class="login_verification">
-              <input type="tel" maxlength="8" placeholder="验证码">
+              <input type="tel" maxlength="6" placeholder="验证码" v-model="code">
             </section>
             <section class="login_hint">
               温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意
@@ -30,7 +30,7 @@
           <div :class="{on:!LoginWay}">
             <section>
               <section class="login_message">
-                <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名">
+                <input type="tel" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
               </section>
               <section class="login_verification">
                 <input type="text" maxlength="8" placeholder="密码"
@@ -44,13 +44,13 @@
                 </div>
               </section>
               <section class="login_message">
-                <input type="text" maxlength="11" placeholder="验证码">
+                <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
                 <img class="get_verification" src="http://localhost:3000/captcha"
                      @click="changeCode" alt="captcha">
               </section>
             </section>
           </div>
-          <button class="login_submit">登录</button>
+          <input type="submit" value="登录" class="login_submit" />
         </form>
         <a href="javascript:;" class="about_us">关于我们</a>
       </div>
@@ -58,18 +58,26 @@
         <i class="iconfont icon-jiantou2"></i>
       </span>
     </div>
+    <AlertTip v-show="showAlert" @closeTip="closeTip" :alertText="alertText"></AlertTip>
   </div>
 </template>
 
 <script>
+  import {reqCaptcha,reqSms,reqUserinfo,reqSendcode,reqLongin} from '../../api/index2'
+  import AlertTip from '../../components/AlertTip/AlertTip.vue'
 	export default {
     data(){
     	return{
     		LoginWay:true,
         showPwd:false,
+        name:'',
         pwd:'',
+        captcha:'',
         phone:'',
+        code:'',
         computeTime:0,
+        showAlert:false,
+        alertText:'',
       }
     },
     computed:{
@@ -88,17 +96,70 @@
       switchShowPwd(){
       	this.showPwd = !this.showPwd
       },
-      getCode(){
+      async getCode(){
       	if(this.rightPhone){
-          this.computeTime = 20
-          const setInID= setInterval(()=>{
+          this.computeTime = 60
+          const setInID = setInterval(()=>{
             this.computeTime--
             if(this.computeTime===0){
             	clearInterval(setInID)
             }
           },1000)
+          const result = await reqSendcode(this.phone)
+          if(result.code===1){
+            clearInterval(setInID)
+            this.showAlert = true
+            this.alertText = result.msg
+          }
+        }
+     },
+      async login(){
+      	let result
+
+        if(this.LoginWay){
+          const {rightPhone, phone, code} = this
+      		if(!rightPhone){
+            this.showAlert = true
+            this.alertText = '请输入正确的手机号'
+            return
+          }else if(!/^\d{6}$/.test(code)){
+            this.showAlert = true
+            this.alertText = '请输入正确的验证码'
+            return
+          }
+          result = await reqSms({phone, code})
+        }else{
+        	const {name,pwd,captcha} = this
+          if(!name){
+            this.showAlert = true
+            this.alertText = '请输入用户名'
+            return
+          }else if(!pwd){
+            this.showAlert = true
+            this.alertText = '请输入密码'
+            return
+          }else if(!captcha){
+            this.showAlert = true
+            this.alertText = '请输入验证码'
+            return
+          }
+          result = await reqLongin({name, pwd, captcha})
+        }
+        if(result.code===0){
+          const userInfo = result.data
+          this.$store.dispatch('recUserInfo',userInfo)
+          this.$router.back()
+        }else{
+          this.showAlert = true
+          this.alertText = result.msg
         }
       },
+      closeTip(){
+      	this.showAlert = false
+      },
+    },
+    components:{
+      AlertTip
     }
   }
 </script>

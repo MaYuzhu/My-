@@ -22,5 +22,5 @@ export const mobileCode = phone => ajax('/api/sendcode', {phone})
 export const phoneLogin = (phone, code) => ajax('/api/login_sms', {phone, code}, 'POST')
 
 //获取用户信息(根据会话)
-export const reqUser = () => ajax('/api/userinfo')
+export const reqUserinfo = () => ajax('/api/userinfo')
 

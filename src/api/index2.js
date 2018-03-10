@@ -12,7 +12,7 @@ export const reqLongin = ({name, pwd, captcha}) => ajax('/api/login_pwd', {name,
 
 export const reqSendcode = (phone) => ajax('/api/sendcode', phone)
 
-export const reqSms = (phone, code) => ajax('/api/login_sms', geohash, 'POST')
+export const reqSms = ({phone, code}) => ajax('/api/login_sms', {phone, code}, 'POST')
 
 export const reqUserinfo = () => ajax('/api/userinfo')
 

@@ -3,17 +3,17 @@
     <section class="profile">
       <HeaderTop title="个人中心"></HeaderTop>
         <section class="profile-number">
-          <router-link to="/login" class="profile-link">
+          <router-link :to="userInfo._id?'/userinfo':'/login'" class="profile-link">
             <div class="profile_image">
               <i class="iconfont icon-person"></i>
             </div>
             <div class="user-info">
-              <p class="user-info-top">登录/注册</p>
-              <p>
+              <p class="user-info-top" v-if="!userInfo.phone">{{userInfo.name||'登录/注册'}}</p>
+               <p>
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-                <span class="icon-mobile-number">暂无绑定手机号</span>
+                <span class="icon-mobile-number">{{userInfo.phone||'暂无绑定手机号'}}</span>
               </p>
             </div>
             <span class="arrow">
@@ -95,7 +95,11 @@
 
 <script>
   import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
+  import {mapState} from 'vuex'
 	export default {
+  	computed:{
+  		...mapState(['userInfo'])
+    },
     components:{
       HeaderTop
     },

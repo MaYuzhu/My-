@@ -2,14 +2,14 @@ import {
   reqAddress,
   reqFoods,
   reqShops,
-
+  reqUserinfo,
 } from '../api'
 
 import {
   RECEIVE_ADDRESS,
   RECEIVE_FOODS,
   RECEIVE_SHOPS,
-
+  RECEIVE_USER_INFO,
 } from './mutation-types'
 
 export default {
@@ -27,5 +27,14 @@ export default {
     const {latitude,longitude} = state
     const result = await reqShops({latitude,longitude})
     commit(RECEIVE_SHOPS,{shops:result.data})
-  }
+  },
+  recUserInfo({commit},userInfo){
+    commit(RECEIVE_USER_INFO,{userInfo})
+  },
+  async getUserInfo({commit}){
+    const result = await reqUserinfo()
+    if(result.code===0){
+      commit(RECEIVE_USER_INFO,{userInfo:result.data})
+    }
+  },
 }
