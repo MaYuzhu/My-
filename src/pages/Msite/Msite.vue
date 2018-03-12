@@ -18,12 +18,13 @@
           </a>
           <a class="header_login" slot="login">
             <router-link to="/login" class="header_login_text">登录|注册</router-link>
+            <!--<router-link to="/profile" class="header_login_text" v-if="userInfo">2登录|注册</router-link>-->
           </a>
         </HeaderTop>
 
         <!--首页导航-->
         <nav class="msite_nav border-1px">
-          <div class="swiper-container">
+          <div class="swiper-container" v-if="foodTypeArr.length>0">
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(cs,index) in foodTypeArr" :key="index">
                 <a href="javascript:" class="link_to_food" v-for="(c,index2) in cs" :key="index2">
@@ -37,6 +38,7 @@
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
           </div>
+          <img src="./msite_back.svg" alt="aaa" v-else>
         </nav>
         <!--首页附近商家-->
         <div class="msite_shop_list border-1px">
