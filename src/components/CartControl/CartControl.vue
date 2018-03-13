@@ -5,11 +5,11 @@
     </transition>
 
     <div class="cart-count" v-if="food.count">{{food.count}}</div>
-    <div class="iconfont icon-add_circle" @click="updateFoodCount(true)"></div>
+    <div class="iconfont icon-add_circle" @click.stop="updateFoodCount(true)"></div>
 
   </div>
 </template>
-
+<p></p>
 <script>
 	export default {
 		props:{
@@ -28,25 +28,19 @@
   @import "../../common/stylus/mixins.styl"
   .cartcontrol
     font-size: 0
-    .cart-decrease
-      display: inline-block
-      padding: 6px
-      line-height: 24px
-      font-size: 24px
-      color: rgb(0, 160, 220)
 
     .icon-remove_circle_outline
       display: inline-block
       padding 6px
       line-height 24px
       font-size 24px
-      color green
-      &.move-enter-active,&.move-leave-active
-        transition all .5s
-
-      &.move-enter,&.move-leave-to
+      color #5859aa
+      &.move-enter-active, &.move-leave-active
+        transition  all 0.3s
+      &.move-enter, &.move-leave-to
         opacity 0
-        transform translate3d(20px,0,0) rotate(180deg)
+        transform translate(30px,0) rotate(90deg)
+
     .cart-count
       display: inline-block
       vertical-align: top
@@ -61,5 +55,5 @@
       padding: 6px
       line-height: 24px
       font-size: 24px
-      color green
+      color #5859aa
 </style>

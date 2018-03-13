@@ -19,35 +19,41 @@
         </div>
       </div>
       <div  class="ball-container">
-
       </div>
-      <div  class="shopcart-list" v-show="listShow">
-        <div  class="list-header">
-          <h1  class="title">购物车</h1>
+      <transition name="listC">
+        <div  class="shopcart-list" v-show="listShow">
+          <div  class="list-header">
+            <h1  class="title">购物车</h1>
 
-          <button class="empty">
-            清空
-          </button>
+            <button class="empty" @click="clearCart">
+              清空
+            </button>
+          </div>
+          <div  class="list-content">
+            <ul>
+              <li class="food" v-for="(food, index) in cartFoods" :key="index">
+                <span class="name">{{food.name}}</span>
+                <div class="price"><span >￥{{food.price}}</span></div>
+                <div class="cartcontrol-wrapper">
+                  <CartControl :food="food"/>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div  class="list-content">
-          <ul>
-            <li class="food" v-for="(food, index) in cartFoods" :key="index">
-              <span class="name">{{food.name}}</span>
-              <div class="price"><span >￥{{food.price}}</span></div>
-              <div class="cartcontrol-wrapper">
-                <CartControl :food="food"/>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      </transition>
+
     </div>
-    <div  class="list-mask" v-show="listShow" @click="toggleShow"></div>
+    <transition name="fade">
+      <div  class="list-mask" v-show="listShow" @click="toggleShow"></div>
+    </transition>
+
   </div>
 </template>
 
 <script>
   import BScroll from 'better-scroll'
+  import {} from 'mint-ui'
   import CartControl from '../CartControl/CartControl.vue'
   import {mapState, mapGetters} from 'vuex'
 	export default {
@@ -99,7 +105,12 @@
       	if(this.totalCount){
           this.isShow = !this.isShow
         }
-      }
+      },
+      clearCart(){
+      	if(window.confirm('确定清空购物车吗')){
+      		this.$store.dispatch('clearCart')
+        }
+      },
     },
 
     components:{
@@ -217,9 +228,9 @@
       z-index: -1
       width: 100%
       transform: translateY(-100%)
-      &.swipe-enter-active, &.swipe-leave-active
+      &.listC-enter-active, &.listC-leave-active
         transition: transform .3s
-      &.swipe-enter, &.swipe-leave-to
+      &.listC-enter, &.listC-leave-to
         transform: translateY(0)
       .list-header
         height: 40px

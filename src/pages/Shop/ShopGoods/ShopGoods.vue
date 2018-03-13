@@ -20,7 +20,8 @@
               <div class="icon">
                 <img width="57" height="57" :src='food.icon'>
               </div>
-              <div class="content"><h2 class="name">{{food.name}}</h2>
+              <div class="content">
+                <h2 class="name">{{food.name}}</h2>
                 <p class="desc">{{food.description}}</p>
                 <div class="extra">
                   <span class="count">月售{{food.sellCount}}份</span>
@@ -38,7 +39,7 @@
         </li>
       </ul>
     </div>
-    <ShopCart/>
+    <ShopCart />
   </div>
 </template>
 
@@ -181,10 +182,12 @@
         display: flex
         margin: 18px
         padding-bottom: 18px
+
         bottom-border-1px(rgba(7, 17, 27, 0.1))
+        /*border-bottom 1px solid rgba(7, 17, 27, 0.1)*/
         &:last-child
           border-none()
-          margin-bottom: 0
+          margin-bottom: 0px
         .icon
           flex: 0 0 57px
           margin-right: 10px
